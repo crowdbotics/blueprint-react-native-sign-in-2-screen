@@ -16,8 +16,8 @@ source blueprint-lib/init.sh
 # APP_NAME is the name of the Django app that will be modified
 ##
 
-BLUEPRINT="SignIn01Blueprint"
-NAME="SignIn 1"
+BLUEPRINT="SignIn02Blueprint"
+NAME="SignIn 2"
 
 EXT_POINT_1="@BlueprintInsertion"
 EXT_POINT_2="@BlueprintImportInsertion"
