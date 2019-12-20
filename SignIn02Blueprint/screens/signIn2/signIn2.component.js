@@ -19,12 +19,25 @@ import { View } from 'react-native';
 
 class SignIn2Component extends React.Component<SignIn2Props> {
 
-   state = {
-    formData: undefined,
+  state = {
+    username: '',
+    password: '',
+  };
+
+  onUsernameInputTextChange = username => {
+    this.setState({username});
+  };
+
+  onPasswordInputTextChange = password => {
+    this.setState({password});
   };
 
    onSignInButtonPress = () => {
-    this.props.onSignInPress(this.state.formData);
+    //this.props.onSignInPress(this.state.formData);
+    this.props.onSignInPress({
+      email: this.state.username,
+      password: this.state.password,
+    });
   };
 
    onSignUpButtonPress = () => {
@@ -56,17 +69,25 @@ class SignIn2Component extends React.Component<SignIn2Props> {
             Sign in to your account
           </Text>
         </View>
+        {this.props.errorMsg && (
+            <View style={themedStyle.msgContainer}>
+              <Text style={{color: 'red'}}>{this.props.errorMsg}</Text>
+            </View>
+          )}
         <SignInForm2
           style={themedStyle.formContainer}
           onForgotPasswordPress={this.onForgotPasswordButtonPress}
-          onDataChange={this.onFormDataChange}
-          
+          //onDataChange={this.onFormDataChange}
+          onUsernameInputTextChange={this.onUsernameInputTextChange}
+          onPasswordInputTextChange={this.onPasswordInputTextChange}
+          email={this.state.username}
+          password={this.state.password}
         />
         <Button
           style={themedStyle.signInButton}
-          textStyle={textStyle.button}
+          //textStyle={textStyle.button}
           size='giant'
-          disabled={!this.state.formData}
+          //disabled={!this.state.formData}
           onPress={this.onSignInButtonPress}>
           SIGN IN
         </Button>
@@ -119,6 +140,14 @@ export const SignIn2 = withStyles(SignIn2Component, (theme) => {
       color: theme['text-hint-color'],
       ...textStyle.subtitle,
     },
+    msgContainer: {
+      borderWidth: 2,
+      borderColor: "#e3e3e3",
+      padding: 10,
+      margin: 10,
+      justifyContent: "center",
+      alignItems: "center"
+    }
   });
 });
 
