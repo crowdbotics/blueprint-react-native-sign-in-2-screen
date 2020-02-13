@@ -16,11 +16,21 @@ source blueprint-lib/init.sh
 # APP_NAME is the name of the Django app that will be modified
 ##
 
-BLUEPRINT="SignIn02Blueprint"
-NAME="SignIn 2"
+BLUEPRINT="$3"
+NAME="$4"
+
+if [ -z "$BLUEPRINT" ]
+then
+    BLUEPRINT="SignIn02Blueprint"
+fi
+
+if [ -z "$NAME" ] 
+then
+    NAME="SignIn 2"
+fi
 
 DATA_1="{ name: '${BLUEPRINT}', human_name: '${NAME}', access_route: '${BLUEPRINT}'},"
-DATA_2="import { ${BLUEPRINT}Navigator } from '..\/features\/${BLUEPRINT}\/navigator';"
+DATA_2="import ${BLUEPRINT}Navigator from '..\/features\/${BLUEPRINT}\/navigator';"
 DATA_3="${BLUEPRINT}: { screen: ${BLUEPRINT}Navigator },"
 
 echo ">> remove blueprint folder"
