@@ -4,7 +4,7 @@ import {SignIn2Container} from './screens/signIn2/signIn2.container';
 
 import Home from './screens';
 
-export const SignIn02BlueprintNavigator = createStackNavigator(
+export default SignIn02BlueprintNavigator = createStackNavigator(
   {
     Home: {screen: Home},
     SignIn2: {screen: SignIn2Container},
